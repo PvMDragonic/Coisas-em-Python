@@ -1,6 +1,23 @@
 def concatenarConta(ligma):
-    falha = 0
+    # Essa parte vai, caso a conta seja escrita toda junta, tratar de separar ela.
+    if len(ligma) == 1:
+        # Vai separar a conta caractere-por-caractere
+        ligma = list(ligma[0])
+        for i in range(len(ligma)):
+            if ligma[i] == "+":
+                ligma[i] = " + "
+            elif ligma[i] == "-":
+                ligma[i] = " - "
+            elif ligma[i] == "*":
+                ligma[i] = " * "
+            elif ligma[i] == "/":
+                ligma[i] = " / "
+            elif ligma[i] == "^":
+                ligma[i] = " ^ "
+        ligma = "".join(ligma)
+        ligma = ligma.split()
     # Essa parte vai verificar se, no lugar onde deveria ter um símbolo matemático, há um número.
+    falha = 0
     for i in range(len(ligma)):
         if (i+1)%2 == 0: # Seleciona só os slots ímpares da array. Ex.: [5, -, 5] ele seleciona o -.
             try:
